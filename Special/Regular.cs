@@ -13,7 +13,16 @@ namespace Tree
 
         public override void print(Node t, int n, bool p)
         {
-            // TODO: Implement this function.
+            // TODO: Implement this function.''
+            if (t.isPair())
+            {
+                print(t.getCar(), n, p);
+                print(t.getCdr(), n, p);
+            }
+            else
+            {
+
+            }
         }
     }
 }

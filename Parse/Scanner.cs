@@ -25,6 +25,11 @@ namespace Parse
             {
                 return true;
             }
+            else if (ch == ';')
+            {
+                In.ReadLine();
+                return true;
+            }
             else
             {
                 return false;
@@ -140,6 +145,11 @@ namespace Parse
                         ch = In.Read();
                         i = (i * 10) + (ch - '0');
                         iNext = In.Peek();
+                    }
+
+                    if(!isBlank(iNext) && iNext != ')')
+                    {
+                        throw new IOException();
                     }
 
                     return new IntToken(i);

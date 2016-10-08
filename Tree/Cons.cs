@@ -16,7 +16,27 @@ namespace Tree
             cdr = d;
             parseList();
         }
-    
+
+        public override Node getCar()
+        {
+            return car;
+        }
+
+        public override Node getCdr()
+        {
+            return cdr;
+        }
+
+        public override void setCar(Node a)
+        {
+            car = a;
+        }
+
+        public override void setCdr(Node d)
+        {
+            cdr = d;
+        }
+
         // parseList() `parses' special forms, constructs an appropriate
         // object of a subclass of Special, and stores a pointer to that
         // object in variable form.  It would be possible to fully parse
