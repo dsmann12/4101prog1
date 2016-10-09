@@ -16,13 +16,26 @@ namespace Tree
             // TODO: Implement this function.
             if (p == false)
             {
-                Console.Write("(");
-                p = true;
+                if (n > 0)
+                {
+                    Console.WriteLine();
+                    for (int i = 0; i < (4 * n); i++)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.Write("(");
+                    p = true;
+                }
+                else
+                {
+                    Console.Write("(");
+                    p = true;
+                }
             }
 
             t.getCar().print(n, p);
-            Console.WriteLine();
-            t.getCdr().print(4*(n+1), p);
+            //Console.WriteLine();
+            t.getCdr().print(n + 1, p);
 
         }
     }

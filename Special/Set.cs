@@ -14,10 +14,25 @@ namespace Tree
         public override void print(Node t, int n, bool p)
         {
             // TODO: Implement this function.
+            // TODO: Implement this function.''
             if (p == false)
             {
-                Console.Write('(');
-                p = true;
+                if (n > 0)
+                {
+                    Console.WriteLine();
+                    for (int i = 0; i < (4 * n); i++)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.Write("(");
+                    p = true;
+                    n = n - 1;
+                }
+                else
+                {
+                    Console.Write('(');
+                    p = true;
+                }
             }
             if (t.getCar().isPair())
             {
