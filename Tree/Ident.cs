@@ -24,7 +24,7 @@ namespace Tree
 	    for (int i = 0; i < n; i++)
                 Console.Write(" ");
 
-            Console.WriteLine(name);
+            Console.Write(name);
         }
 
         public override bool isSymbol()

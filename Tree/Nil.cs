@@ -19,9 +19,9 @@ namespace Tree
                 Console.Write(" ");
 
             if (p)
-                Console.WriteLine(")");
+                Console.Write(")");
             else
-                Console.WriteLine("()");
+                Console.Write("()");
         }
 
         public override bool isNull()

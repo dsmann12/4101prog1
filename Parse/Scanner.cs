@@ -49,7 +49,7 @@ namespace Parse
                 // buffer, but reading individual characters from the
                 // input stream is easier.
                 ch = In.Read();
-   
+
                 // TODO: skip white space and comments
                 //Skips white space
                 if (isBlank(ch))
@@ -60,7 +60,7 @@ namespace Parse
                 //Null if stream has no tokens left
                 if (ch == -1)
                     return null;
-        
+
                 // Special characters
                 else if (ch == '\'')
                     return new Token(TokenType.QUOTE);
@@ -71,7 +71,7 @@ namespace Parse
                 else if (ch == '.')
                     // We ignore the special identifier `...'.
                     return new Token(TokenType.DOT);
-                
+
                 // Boolean constants
                 else if (ch == '#')
                 {
@@ -99,7 +99,7 @@ namespace Parse
                 {
                     // TODO: scan a string into the buffer variable buf
                     //stores first character of string in buffer[0]
-                    buf[0] = (char)ch; 
+                    buf[0] = (char)ch;
                     int chNext = In.Peek();
                     int size = 1;
 
@@ -111,7 +111,7 @@ namespace Parse
                         chNext = In.Peek();
                     }
 
-                    if(chNext == '\"')
+                    if (chNext == '\"')
                     {
                         ch = In.Read();
                         buf[size++] = (char)ch;
@@ -127,7 +127,7 @@ namespace Parse
                     return new StringToken(new String(buf, 0, size));
                 }
 
-    
+
                 // Integer constants
                 else if (ch >= '0' && ch <= '9')
                 {
@@ -147,16 +147,20 @@ namespace Parse
                         iNext = In.Peek();
                     }
 
-                    if(!isBlank(iNext) && iNext != ')')
+                    if (!isBlank(iNext) && iNext != ')')
                     {
                         throw new IOException();
                     }
 
                     return new IntToken(i);
                 }
-        
+
                 // Identifiers
-                else if ( (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')
+                else if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z')
+                            || (ch >= '#' && ch <= '&') || (ch >= '*' && ch <= '+')
+                            || (ch >= '-' && ch <= '/') || (ch >= '<' && ch <= '@') 
+                            || (ch >= '^' && ch >= '_')
+                            || (ch == '!') || (ch == ':') || (ch == '~')
                          // or ch is some other valid first character
                          // for an identifier
                          ) {
@@ -173,7 +177,7 @@ namespace Parse
                     int chNext = In.Peek();
                     int size = 1;
 
-                    for (int i = 1; !isBlank(chNext); i++, size++)
+                    for (int i = 1; !isBlank(chNext) && (chNext != ')'); i++, size++)
                     {
                         ch = In.Read();
                         buf[i] = (char) ch;

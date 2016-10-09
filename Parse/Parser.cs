@@ -54,7 +54,7 @@ namespace Parse
 
             //While scanner is not empty
             //Return correct node depending on tokentype
-            while (tok != null)
+            if (tok != null)
             {
                 TokenType tt = tok.getType();
 

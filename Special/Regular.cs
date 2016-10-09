@@ -1,3 +1,4 @@
+
 // Regular -- Parse tree node strategy for printing regular lists
 
 using System;
@@ -11,18 +12,29 @@ namespace Tree
         // TODO: Add an appropriate constructor.
         public Regular() { }
 
+
         public override void print(Node t, int n, bool p)
         {
             // TODO: Implement this function.''
-            if (t.isPair())
+            if (p == false)
             {
-                print(t.getCar(), n, p);
-                print(t.getCdr(), n, p);
+                Console.Write('(');
+                p = true;
+            }
+            if (t.getCar().isPair())
+            {
+                t.getCar().print(n, false);
             }
             else
             {
-
+                t.getCar().print(n, p);
             }
+
+            if (!t.getCdr().isNull())
+                Console.Write(" ");
+
+            t.getCdr().print(n, p);
+
         }
     }
 }
